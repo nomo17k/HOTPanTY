@@ -1,0 +1,7 @@
+TS has made quite a few changes to HOTPanTS version 5.1.10 in order to
+do PSF matching just using point sources.
+
+Note that the program for the most part assume that the template gets
+convolved to match the image, but the program flow hasn't been totally
+changed to ensure that this always happens.  Hence you should provide
+the "-c t" option to force convolution on template.
