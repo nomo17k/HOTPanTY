@@ -44,7 +44,7 @@ CC    = gcc
 STDH  = functions.h globals.h defaults.h
 ALL   = main.o vargs.o alard.o functions.o 
 
-all:	hotpanty extractkerny maskimy
+all:	hotpanty hpextractkern maskimy
 
 hotpanty: $(ALL)
 	$(CC) $(ALL) -o hotpanty $(LIBS) $(COPTS)
@@ -62,8 +62,8 @@ functions.o: $(STDH) functions.c
 vargs.o: $(STDH) vargs.c
 	$(CC) $(COPTS)  -c vargs.c
 
-extractkerny : extractkern.o 
-	$(CC) extractkern.o -o extractkerny $(LIBS) $(COPTS)
+hpextractkern : extractkern.o 
+	$(CC) extractkern.o -o hpextractkern $(LIBS) $(COPTS)
 
 extractkern.o : $(STDH) extractkern.c
 	$(CC) $(COPTS)  -c extractkern.c
@@ -78,5 +78,5 @@ clean :
 	rm -f *.o
 	rm -f *~ .*~
 	rm -f hotpanty
-	rm -f extractkerny
+	rm -f hpextractkern
 	rm -f maskimy

@@ -65,8 +65,8 @@ functions.o: $(STDH) functions.c
 vargs.o: $(STDH) vargs.c
 	$(CC) $(COPTS)  -c vargs.c
 
-extractkerny : extractkern.o 
-	$(CC) extractkern.o -o extractkerny $(LIBS) $(COPTS)
+hpextractkern : extractkern.o 
+	$(CC) extractkern.o -o hpextractkern $(LIBS) $(COPTS)
 
 extractkern.o : $(STDH) extractkern.c
 	$(CC) $(COPTS)  -c extractkern.c
@@ -81,5 +81,5 @@ clean :
 	rm -f *.o
 	rm -f *~ .*~
 	rm -f hotpanty
-	rm -f extractkerny
+	rm -f hpextractkern
 	rm -f maskimy
