@@ -62,11 +62,11 @@ functions.o: $(STDH) functions.c
 vargs.o: $(STDH) vargs.c
 	$(CC) $(COPTS)  -c vargs.c
 
-hpextractkern : extractkern.o 
-	$(CC) extractkern.o -o hpextractkern $(LIBS) $(COPTS)
+hpextractkern : hpextractkern.o 
+	$(CC) hpextractkern.o -o hpextractkern $(LIBS) $(COPTS)
 
-extractkern.o : $(STDH) extractkern.c
-	$(CC) $(COPTS)  -c extractkern.c
+hpextractkern.o : $(STDH) hpextractkern.c
+	$(CC) $(COPTS)  -c hpextractkern.c
 
 maskimy : maskim.o
 	$(CC) maskim.o -o maskimy $(LIBS) $(COPTS)
