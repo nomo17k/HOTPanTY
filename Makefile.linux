@@ -4,10 +4,10 @@
 # THE STANDARD PLACES
 # 
 
-CFITSIOINCDIR =  /home/tsato/include
-LIBDIR        =  /home/tsato/lib
-#CFITSIOINCDIR =  /usr/include
-#LIBDIR        =  /usr/lib
+#CFITSIOINCDIR =  /home/tsato/include
+#LIBDIR        =  /home/tsato/lib
+CFITSIOINCDIR =  /usr/include
+LIBDIR        =  /usr/lib
 
 
 
@@ -34,8 +34,8 @@ COPTS = -funroll-loops -O3 -ansi -Wall -std=c99 -I$(CFITSIOINCDIR)
 LIBS  = -L$(LIBDIR) -lm -lcfitsio
 
 # compiler
-CC    = gcc4
-#CC    = gcc
+#CC    = gcc4
+CC    = gcc
 
 #
 #
@@ -47,7 +47,7 @@ CC    = gcc4
 STDH  = functions.h globals.h defaults.h
 ALL   = main.o vargs.o alard.o functions.o 
 
-all:	hotpanty extractkerny maskimy
+all:	hotpanty hpextractkern maskimy
 
 hotpanty: $(ALL)
 	$(CC) $(ALL) -o hotpanty $(LIBS) $(COPTS)
@@ -65,11 +65,11 @@ functions.o: $(STDH) functions.c
 vargs.o: $(STDH) vargs.c
 	$(CC) $(COPTS)  -c vargs.c
 
-hpextractkern : extractkern.o 
-	$(CC) extractkern.o -o hpextractkern $(LIBS) $(COPTS)
+hpextractkern : hpextractkern.o 
+	$(CC) hpextractkern.o -o hpextractkern $(LIBS) $(COPTS)
 
-extractkern.o : $(STDH) extractkern.c
-	$(CC) $(COPTS)  -c extractkern.c
+hpextractkern.o : $(STDH) hpextractkern.c
+	$(CC) $(COPTS)  -c hpextractkern.c
 
 maskimy : maskim.o
 	$(CC) maskim.o -o maskimy $(LIBS) $(COPTS)
