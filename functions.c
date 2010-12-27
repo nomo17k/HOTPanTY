@@ -55,8 +55,10 @@ void loadxyfile(char *filename, int cmpfileflag)
       
       /* skip poorly formatted lines... */
       if (isalpha(line[0])) continue;
-      if (sscanf(line, "%f %f %f %f", &xcmp[Ncmp], &ycmp[Ncmp], &fcmp[Ncmp], &dfcmp[Ncmp]) == 4) {
-         Ncmp++;
+
+      int ptsflag = 0;
+      if (sscanf(line, "%f %f %f %f %d", &xcmp[Ncmp], &ycmp[Ncmp], &fcmp[Ncmp], &dfcmp[Ncmp], &ptsflag) == 5) {
+         Ncmp = (ptsflag == 0 ? Ncmp + 1 : Ncmp);
       }
    }
    fclose(xyfile);

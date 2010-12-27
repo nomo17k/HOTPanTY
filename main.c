@@ -1824,7 +1824,7 @@ int main(int argc,char *argv[])
          fits_write_key_str(ePtr, hKeyword, hInfo, "", &status);
 
       sprintf(hKeyword, "KSUM%02d", i);
-      sprintf(hInfo,    "%.4f", sumKernel);
+      sprintf(hInfo,    "%.8f", sumKernel); // TS: used to be %.4f
       fits_write_key_str(oPtr, hKeyword, hInfo, "Kernel Sum", &status);
       if (kernelImOut)
          fits_write_key_str(ePtr, hKeyword, hInfo, "Kernel Sum", &status);
@@ -2000,6 +2000,8 @@ int main(int argc,char *argv[])
       fits_write_key_lng(oPtr, "FWKERN",  fwKernel, "Kernel Width in Pixels", &status);
       fits_write_key_lng(oPtr, "CKORDER", kerOrder, "Spatial Convolution Order", &status);
       fits_write_key_lng(oPtr, "BGORDER", bgOrder,  "Background Order", &status);
+      fits_write_key_lng(oPtr, "HPKCS", kcStep,  "Kernel Convolution Step", &status);
+      fits_write_key_lng(oPtr, "HPFWSTMP", fwStamp,  "Stemp full width", &status);
    }
    else {
       if (!(kernelImOut))
@@ -2038,9 +2040,13 @@ int main(int argc,char *argv[])
       fits_write_key_lng(ePtr, "FWKERN",  fwKernel, "Kernel Width in Pixels", &status);
       fits_write_key_lng(ePtr, "CKORDER", kerOrder, "Spatial Convolution Order", &status);
       fits_write_key_lng(ePtr, "BGORDER", bgOrder,  "Background Order", &status);
+      fits_write_key_lng(ePtr, "HPKCS", kcStep,  "Kernel Convolution Step", &status);
+      fits_write_key_lng(ePtr, "HPFWSTMP", fwStamp,  "Stemp full width", &status);
       fits_write_key_lng(oPtr, "FWKERN",  fwKernel, "Kernel Width in Pixels", &status);
       fits_write_key_lng(oPtr, "CKORDER", kerOrder, "Spatial Convolution Order", &status);
       fits_write_key_lng(oPtr, "BGORDER", bgOrder,  "Background Order", &status);
+      fits_write_key_lng(oPtr, "HPKCS", kcStep,  "Kernel Convolution Step", &status);
+      fits_write_key_lng(oPtr, "HPFWSTMP", fwStamp,  "Stemp full width", &status);
       fits_close_file(ePtr, &status);
    }
    else {
