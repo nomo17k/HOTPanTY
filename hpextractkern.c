@@ -255,9 +255,14 @@ int init_kernel(char *kimage, Kernel *ck, int *ostatus)
     int ig, idegx, idegy, nvec, ren;
     nvec = 0;
     for (ig = 0; ig < ck->ngauss; ig++) {
+      printf("ngauss: %d\n", ck->ngauss);
       for (idegx = 0; idegx <= ck->deg_fixe[ig]; idegx++) {
+        printf("deg_fixe: %d\n", ck->deg_fixe[ig]);
         for (idegy = 0; idegy <= ck->deg_fixe[ig] - idegx; idegy++) {
           /* stores kernel weight mask for each order */
+
+          printf("%d %d %d %d\n", nvec, ig, idegx, idegy);
+
           ck->kernel_vec[nvec] = (double *)malloc(ck->fw * ck->fw * sizeof(double));
           kernel_vector(ck, nvec, idegx, idegy, ig, &ren);
           nvec++;
@@ -324,14 +329,6 @@ void release_kernel(Kernel *ck)
    * Free memory allocated in init_kernel() 
    */
   int i, ig, idegx, idegy, nvec = 0;
-  if (ck->deg_fixe) free(ck->deg_fixe);
-  if (ck->sigma_gauss) free(ck->sigma_gauss);
-  if (ck->filter_x) free(ck->filter_x);
-  if (ck->filter_y) free(ck->filter_y);
-  if (ck->kernel) free(ck->kernel);
-  if (ck->kernel_coeffs) free(ck->kernel_coeffs);
-  if (ck->solution) free(ck->solution);
-
   for (ig = 0; ig < ck->ngauss; ig++) {
     for (idegx = 0; idegx <= ck->deg_fixe[ig]; idegx++) {
       for (idegy = 0; idegy <= ck->deg_fixe[ig] - idegx; idegy++) {
@@ -342,6 +339,13 @@ void release_kernel(Kernel *ck)
     }
   }
   if (ck->kernel_vec) free(ck->kernel_vec);
+
+  if (ck->deg_fixe) free(ck->deg_fixe);
+  if (ck->sigma_gauss) free(ck->sigma_gauss);
+  if (ck->filter_x) free(ck->filter_x);
+  if (ck->filter_y) free(ck->filter_y);
+  if (ck->kernel) free(ck->kernel);
+  if (ck->kernel_coeffs) free(ck->kernel_coeffs);
 
   if (ck->rxmins) free(ck->rxmins);
   if (ck->rxmaxs) free(ck->rxmaxs);
