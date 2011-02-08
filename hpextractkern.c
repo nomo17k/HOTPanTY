@@ -255,13 +255,13 @@ int init_kernel(char *kimage, Kernel *ck, int *ostatus)
     int ig, idegx, idegy, nvec, ren;
     nvec = 0;
     for (ig = 0; ig < ck->ngauss; ig++) {
-      printf("ngauss: %d\n", ck->ngauss);
+      //printf("ngauss: %d\n", ck->ngauss);
       for (idegx = 0; idegx <= ck->deg_fixe[ig]; idegx++) {
-        printf("deg_fixe: %d\n", ck->deg_fixe[ig]);
+        //printf("deg_fixe: %d\n", ck->deg_fixe[ig]);
         for (idegy = 0; idegy <= ck->deg_fixe[ig] - idegx; idegy++) {
           /* stores kernel weight mask for each order */
 
-          printf("%d %d %d %d\n", nvec, ig, idegx, idegy);
+          //printf("%d %d %d %d\n", nvec, ig, idegx, idegy);
 
           ck->kernel_vec[nvec] = (double *)malloc(ck->fw * ck->fw * sizeof(double));
           kernel_vector(ck, nvec, idegx, idegy, ig, &ren);
