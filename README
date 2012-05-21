@@ -5,3 +5,14 @@ Note that the program for the most part assume that the template gets
 convolved to match the image, but the program flow hasn't been totally
 changed to ensure that this always happens.  Hence you should provide
 the "-c t" option to force convolution on template.
+
+
+Here's the brief explanations of output file extensions:
+
+odi -- output difference image
+omi -- output bad pixel mask
+oni -- output noise image
+ond -- output noise scaled difference image
+oci -- output convolved image
+ocn -- output convolved noise image
+oki -- output with kernel info
